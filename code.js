@@ -1,7 +1,26 @@
+let data = fetch("https://jte6ot75ci.execute-api.us-west-2.amazonaws.com/GetPersonalProjectData", {
+    method: 'GET',
+    mode: "cors",
+})
+.then(response => {
+    return response.json()
+})
+.then(carouselData => {
+    document.getElementById("main-page-carousel").innerHTML = carouselData.map(proj => {
+        console.log(proj)
+        return `<div>
+        <a href="${proj.ProjectURL}"><h1> ${proj.ProjectImage}!</h1></a>
+        </div>`
+    })
+})
+.catch(err => {
+    console.error(err)
+})
+
 function handleClick(e) {
     e.preventDefault();
     
-    let currInnerHTML = e.target.innerHTML.toLowerCase().replace("•", "").trim()
+    let currInnerHTML = e.target.innerHTML.toLowerCase().replace("•", "").trim();
 
     switch (currInnerHTML) {
         case "about":
@@ -12,7 +31,6 @@ function handleClick(e) {
             document.getElementById("about-link").innerHTML = "<p>About &#x2022</p>"
             document.getElementById("work-link").innerHTML = "<p>Work</p>"
             document.getElementById("contact-link").innerHTML = "<p>Contact</p>"
-            document.getElementById("resume-link").innerHTML = "<p>Resume</p>"
             break;
         case "work":
             document.getElementById("main-page-content-wrapper").classList.remove("about")
@@ -22,7 +40,6 @@ function handleClick(e) {
             document.getElementById("about-link").innerHTML = "<p>About</p>"
             document.getElementById("work-link").innerHTML = "<p>Work &#x2022</p>"
             document.getElementById("contact-link").innerHTML = "<p>Contact</p>"
-            document.getElementById("resume-link").innerHTML = "<p>Resume</p>"
             break;
         case "contact":
             document.getElementById("main-page-content-wrapper").classList.remove("about")
@@ -32,19 +49,9 @@ function handleClick(e) {
             document.getElementById("about-link").innerHTML = "<p>About</p>"
             document.getElementById("work-link").innerHTML = "<p>Work</p>"
             document.getElementById("contact-link").innerHTML = "<p>Contact &#x2022</p>"
-            document.getElementById("resume-link").innerHTML = "<p>Resume</p>"
-            break;
-        case "resume":
-            document.getElementById("main-page-content-wrapper").classList.remove("about")
-            document.getElementById("main-page-content-wrapper").classList.remove("work")
-            document.getElementById("main-page-content-wrapper").classList.remove("contact")
-            document.getElementById("main-page-content-wrapper").classList.add("resume")
-            document.getElementById("about-link").innerHTML = "<p>About</p>"
-            document.getElementById("work-link").innerHTML = "<p>Work</p>"
-            document.getElementById("contact-link").innerHTML = "<p>Contact</p>"
-            document.getElementById("resume-link").innerHTML = "<p>Resume &#x2022</p>"
             break;
         default:
             break;
     }
 }
+
