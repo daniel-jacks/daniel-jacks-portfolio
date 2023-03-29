@@ -8,6 +8,8 @@ body {
     background-color: #121217;
     font-family: poppins;
     font-size: 18px;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -44,7 +46,7 @@ h3 {
 #main-page-grid {
     display: grid;
     grid-template-columns: 15.5% 23% 23% 23% 15.5%;
-    grid-template-rows: 3rem auto 10rem;
+    grid-template-rows: 3rem auto 3rem auto;
 }
 
 .first-row {
@@ -136,7 +138,7 @@ h3 {
     border-top: 8px solid #121217;
     border-left: 8px solid #121217;
     border-radius: 3px;
-    width: 60%;
+    width: 55%;
     margin-left: 40%;
 }
 
@@ -162,7 +164,88 @@ h3 {
     cursor: pointer;
 }
 
-#main-page-carousel {
-    grid-row: 3;
+#main-page-carousel-widget {
+    grid-row: 4;
     grid-column: 2 / 5;
+    display: flex;
 }
+
+#main-page-carousel-widget > .carousel-button-wrapper {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-page-carousel-widget > .carousel-button-wrapper > .carousel-button-bg {
+    display: flex;
+    align-items: center;
+    height: 15%;
+    border-radius: 2px;
+}
+
+#main-page-carousel-widget > .carousel-button-wrapper > .carousel-button-bg > .carousel-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#main-page-carousel-widget > .carousel-button-wrapper:nth-child(1) > .carousel-button-bg > .carousel-button {
+    border: 8px ridge #68768D;
+    border-top: 8px none #121217;
+    border-right: 8px none #121217;
+    transform: translate(10px) rotateY(0deg) rotate(45deg);
+}
+
+#main-page-carousel-widget > .carousel-button-wrapper:nth-child(3) > .carousel-button-bg > .carousel-button {
+    border: 8px ridge #68768D;
+    border-bottom: 8px none #121217;
+    border-left: 8px none #121217;
+    transform: translate(-10px) rotateY(0deg) rotate(45deg);
+}
+
+#main-page-carousel-widget > .carousel-button-wrapper > .carousel-button-bg:hover {
+    background-color: #1b1b2207;
+    cursor: pointer;
+}
+
+#main-page-carousel {
+    width: 80%;
+    overflow-x: hidden;
+    padding: 3rem 0 3rem 0;
+}
+
+#main-page-carousel-wrapper {
+    width: 200%;
+    display: flex;
+}
+
+#main-page-carousel-wrapepr > div {
+    width: 50%;
+}
+
+#main-page-carousel-wrapper > div > a > img {
+    width: 100%;
+}
+
+/* 
+#main-page-content {
+    width: 100%;
+    overflow-x: hidden;
+    grid-row: 2;
+    grid-column: 2 / 4;
+    border: 8px ridge #68768D;
+    border-bottom: 8px solid #121217;
+    border-right: 8px solid #121217;
+    border-radius: 3px;
+}
+
+#main-page-content-wrapper {
+    width: 400%;
+    display: flex;
+}
+
+#main-page-content-wrapper > div {
+    width: 25%;
+} */
