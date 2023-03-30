@@ -8,22 +8,24 @@ let data = fetch("https://jte6ot75ci.execute-api.us-west-2.amazonaws.com/GetPers
 .then(carouselData => {
     carouselData.forEach(proj => {
         console.log(proj)
-        let carouselItemImg = document.createElement("img")
-        carouselItemImg.setAttribute("src", "https://picsum.photos/1000/600")
+        // let carouselItemImg = document.createElement("img")
+        // carouselItemImg.setAttribute("src", "https://picsum.photos/1000/600")
         
-        let carouselItemTitle = document.createElement("h2")
-        carouselItemTitle.innerText = `${proj.ProjectTitle}`
+        // let carouselItemTitle = document.createElement("h3")
+        // carouselItemTitle.innerText = `${proj.ProjectTitle}`
+        // carouselItemTitle.classList.add("project-title")
 
-        // let carouselItemLink = document.createElement("a")
+        let carouselItemLink = document.createElement("a")
         // carouselItemLink.setAttribute("href", proj.ProjectURL)
         // carouselItemLink.setAttribute("target", "_blank")
         // carouselItemLink.setAttribute("rel", "noreferrer")
         
-        let carouselItem = document.createElement("div")
-        carouselItem.appendChild(carouselItemTitle)
-        carouselItem.appendChild(carouselItemImg)
+        // let carouselItem = document.createElement("div")
+        // carouselItem.setAttribute("style", "background-image: url('https://picsum.photos/1000/600'); height: 300px; background-size: 100% 100%;")
+        // carouselItem.appendChild(carouselItemTitle)
+        // carouselItem.appendChild(carouselItemImg)
 
-        document.getElementById("main-page-carousel-wrapper").appendChild(carouselItem)
+        // document.getElementById("main-page-carousel-wrapper").appendChild(carouselItem)
     })
 
     
