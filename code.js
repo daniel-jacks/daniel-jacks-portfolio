@@ -9,16 +9,19 @@ let data = fetch("https://jte6ot75ci.execute-api.us-west-2.amazonaws.com/GetPers
     carouselData.forEach(proj => {
         console.log(proj)
         let carouselItemImg = document.createElement("img")
-        carouselItemImg.setAttribute("src", "https://picsum.photos/500/400")
+        carouselItemImg.setAttribute("src", "https://picsum.photos/1000/600")
         
-        let carouselItemLink = document.createElement("a")
-        carouselItemLink.setAttribute("href", proj.ProjectURL)
-        carouselItemLink.setAttribute("target", "_blank")
-        carouselItemLink.setAttribute("rel", "noreferrer")
-        carouselItemLink.appendChild(carouselItemImg)
+        let carouselItemTitle = document.createElement("h2")
+        carouselItemTitle.innerText = `${proj.ProjectTitle}`
+
+        // let carouselItemLink = document.createElement("a")
+        // carouselItemLink.setAttribute("href", proj.ProjectURL)
+        // carouselItemLink.setAttribute("target", "_blank")
+        // carouselItemLink.setAttribute("rel", "noreferrer")
         
         let carouselItem = document.createElement("div")
-        carouselItem.appendChild(carouselItemLink)
+        carouselItem.appendChild(carouselItemTitle)
+        carouselItem.appendChild(carouselItemImg)
 
         document.getElementById("main-page-carousel-wrapper").appendChild(carouselItem)
     })

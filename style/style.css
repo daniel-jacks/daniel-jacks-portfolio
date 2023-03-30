@@ -206,7 +206,7 @@ h3 {
 }
 
 #main-page-carousel-widget > .carousel-button-wrapper > .carousel-button-bg:hover {
-    background-color: #1b1b2207;
+    background-color: #70707425;
     cursor: pointer;
 }
 
@@ -221,13 +221,18 @@ h3 {
     display: flex;
 }
 
-#main-page-carousel-wrapepr > div {
+#main-page-carousel-wrapper > div {
     width: 50%;
 }
 
+#main-page-carousel-wrapper > div > img {
+    width: 100%;
+    max-height: 25rem;
+}
+/* 
 #main-page-carousel-wrapper > div > a > img {
     width: 100%;
-}
+} */
 
 /* 
 #main-page-content {
