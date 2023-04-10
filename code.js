@@ -1,4 +1,4 @@
-let data = fetch("https://jte6ot75ci.execute-api.us-west-2.amazonaws.com/GetPersonalProjectData", {
+let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/projects", {
     method: "GET",
     mode: "cors",
 })
@@ -6,29 +6,36 @@ let data = fetch("https://jte6ot75ci.execute-api.us-west-2.amazonaws.com/GetPers
     return response.json()
 })
 .then(carouselData => {
-    carouselData.forEach(proj => {
-        console.log(proj)
-        // let carouselItemImg = document.createElement("img")
-        // carouselItemImg.setAttribute("src", "https://picsum.photos/1000/600")
-        
-        // let carouselItemTitle = document.createElement("h3")
-        // carouselItemTitle.innerText = `${proj.ProjectTitle}`
-        // carouselItemTitle.classList.add("project-title")
+    arrayOfProjects = carouselData;
+    let projectsElement = document.getElementById("main-page-projects-wrapper");
+    carouselData.forEach((proj, idx) => {
+        let projectLink = document.createElement("a");
+        projectLink.innerHTML = "Go to project &rarr;";
+        projectLink.setAttribute("href", proj.ProjectURL);
+        projectLink.setAttribute("rel", "noreferrer");
+        projectLink.setAttribute("target", "_blank");
 
-        let carouselItemLink = document.createElement("a")
-        // carouselItemLink.setAttribute("href", proj.ProjectURL)
-        // carouselItemLink.setAttribute("target", "_blank")
-        // carouselItemLink.setAttribute("rel", "noreferrer")
-        
-        // let carouselItem = document.createElement("div")
-        // carouselItem.setAttribute("style", "background-image: url('https://picsum.photos/1000/600'); height: 300px; background-size: 100% 100%;")
-        // carouselItem.appendChild(carouselItemTitle)
-        // carouselItem.appendChild(carouselItemImg)
+        let projectDetails = document.createElement("p");
+        projectDetails.textContent = proj.projectDetails;
 
-        // document.getElementById("main-page-carousel-wrapper").appendChild(carouselItem)
+        let projectTitle = document.createElement("h4");
+        projectTitle.textContent = proj.projectTitle;
+
+        let hoverArea = document.createElement("div");
+        hoverArea.appendChild(projectTitle);
+        hoverArea.appendChild(projectDetails);
+        hoverArea.appendChild(projectLink);
+
+        let projectImg = document.createElement("img");
+        projectImg.setAttribute("src", proj.projectImg);
+        projectImg.setAttribute("alt", proj.projectImgDesc);
+        
+        let projectItem = document.createElement("div");
+        projectItem.setAttribute("class", "projects-item")
+        projectItem.appendChild(projectImg);
+        projectItem.appendChild(hoverArea);
+        projectsElement.appendChild(projectItem);
     })
-
-    
 })
 .catch(err => {
     console.error(err)
@@ -71,4 +78,3 @@ function handleNavClick(e) {
             break;
     }
 }
-
