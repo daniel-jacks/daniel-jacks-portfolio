@@ -1,3 +1,13 @@
+document.getElementById("about-link").addEventListener("click", function (e) {
+    handleNavClick(e);
+});
+document.getElementById("work-link").addEventListener("click", function (e) {
+    handleNavClick(e);
+});
+document.getElementById("contact-link").addEventListener("click", function (e) {
+    handleNavClick(e);
+});
+
 let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/projects", {
     method: "GET",
     mode: "cors",
@@ -14,6 +24,9 @@ let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/project
         projectLink.setAttribute("href", proj.ProjectURL);
         projectLink.setAttribute("rel", "noreferrer");
         projectLink.setAttribute("target", "_blank");
+        
+        let projectLinkDiv = document.createElement("div");
+        projectLinkDiv.appendChild(projectLink);
 
         let projectDetails = document.createElement("p");
         projectDetails.textContent = proj.projectDetails;
@@ -24,7 +37,7 @@ let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/project
         let hoverArea = document.createElement("div");
         hoverArea.appendChild(projectTitle);
         hoverArea.appendChild(projectDetails);
-        hoverArea.appendChild(projectLink);
+        hoverArea.appendChild(projectLinkDiv);
 
         let projectImg = document.createElement("img");
         projectImg.setAttribute("src", proj.projectImg);

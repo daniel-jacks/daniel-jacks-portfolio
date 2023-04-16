@@ -3,6 +3,11 @@
     src: url(./fonts/Poppins-Light.ttf);
 }
 
+@font-face {
+    font-family: sourcecodepro;
+    src: url(./fonts/SourceCodePro-VariableFont_wght.ttf);
+}
+
 body {
     box-sizing: border-box;
     background-color: #121217;
@@ -13,11 +18,12 @@ body {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 34px;
+    font-family: sourcecodepro;
 }
 
 h2 {
-    font-size: 36px;
+    font-size: 50px;
 }
 
 h3 {
@@ -34,6 +40,14 @@ h4 {
     margin-top: 2rem;
     margin-right: 15.5%;
     margin-left: 15.5%;
+}
+
+#main-page-header-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    color: #FEF5EC;
 }
 
 #main-page-header-links {
@@ -146,7 +160,7 @@ h4 {
 }
 
 #main-page-links-list {
-    padding: 4rem 2rem 0 0;
+    padding: 3rem 2rem 0 0;
 }
 
 #main-page-links-list > div {
@@ -216,14 +230,20 @@ h4 {
     color: #FEF5EC
 }
 
-.projects-item > div > a {
+.projects-item > div > div {
+    display: flex;
+    justify-content: end;
+}
+
+.projects-item > div > div > a {
     text-decoration: none;
     color: #FDEBD8;
     font-weight: 600;
+    padding-right: 10px;
 }
 
 .projects-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   
   .projects-item:hover div {
