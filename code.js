@@ -29,7 +29,7 @@ let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/project
         projectLinkDiv.appendChild(projectLink);
 
         let projectDetails = document.createElement("p");
-        projectDetails.textContent = proj.projectDetails;
+        projectDetails.innerHTML = proj.projectDetails;
 
         let projectTitle = document.createElement("h4");
         projectTitle.textContent = proj.projectTitle;
