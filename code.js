@@ -44,7 +44,16 @@ let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/project
         projectImg.setAttribute("alt", proj.projectImgDesc);
         
         let projectItem = document.createElement("div");
+        projectItem.addEventListener("touchstart", function(){
+            let classList = Array.from(projectItem.classList);
+            if (classList.includes("hover_effect")) {
+                projectItem.classList.remove("hover_effect");
+                return;
+            }
+            projectItem.classList.add("hover_effect")
+        });
         projectItem.setAttribute("class", "projects-item")
+        projectItem.setAttribute("style", `--order: ${idx }`)
         projectItem.appendChild(projectImg);
         projectItem.appendChild(hoverArea);
         projectsElement.appendChild(projectItem);
