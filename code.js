@@ -19,12 +19,21 @@ else if (parseInt(darkmode) === 0) {
 document.getElementById("about-link").addEventListener("click", function (e) {
     handleNavClick(e);
 });
+document.getElementById("about-link").addEventListener("touchstart", function (e) {
+    handleNavClick(e);
+});
 
 document.getElementById("work-link").addEventListener("click", function (e) {
     handleNavClick(e);
 });
+document.getElementById("work-link").addEventListener("touchstart", function (e) {
+    handleNavClick(e);
+});
 
 document.getElementById("contact-link").addEventListener("click", function (e) {
+    handleNavClick(e);
+});
+document.getElementById("contact-link").addEventListener("touchstart", function (e) {
     handleNavClick(e);
 });
 
@@ -67,6 +76,7 @@ function handleCopy() {
 
 function handleNavClick(e) {
     e.preventDefault();
+    e.stopPropagation();
     
     let currInnerHTML = e.target.innerHTML.toLowerCase().replace("•", "").trim();
 

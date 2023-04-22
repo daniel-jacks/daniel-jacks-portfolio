@@ -35,7 +35,9 @@ let data = fetch("../projs.json", {
         projectImg.setAttribute("alt", proj.projectImgDesc);
         
         let projectItem = document.createElement("div");
-        projectItem.addEventListener("touchstart", function(){
+        projectItem.addEventListener("touchstart", function(e){
+            e.preventDefault();
+            e.stopPropagation();
             let classList = Array.from(projectItem.classList);
             if (classList.includes("hover_effect")) {
                 projectItem.classList.remove("hover_effect");
