@@ -39,11 +39,13 @@ let data = fetch("../projs.json", {
             e.preventDefault();
             e.stopPropagation();
             let classList = Array.from(projectItem.classList);
-            if (classList.includes("hover_effect")) {
-                projectItem.classList.remove("hover_effect");
-                return;
+            if (!classList.includes("hover_effect")) {
+                projectItem.classList.add("hover_effect");
+        
+                setTimeout(() => {
+                    projectItem.classList.remove("hover_effect");
+                }, 8000);
             }
-            projectItem.classList.add("hover_effect")
         });
         projectItem.setAttribute("class", "projects-item")
         projectItem.setAttribute("style", `--order: ${idx }`)
