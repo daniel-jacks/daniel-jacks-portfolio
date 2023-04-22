@@ -1,67 +1,69 @@
+// Local Storage Vars
+
+let darkmode = localStorage.getItem("darkmode") ?? 1;
+let darkLightModeEl = document.getElementById("lightmode-darkmode");
+
+if (parseInt(darkmode) === 1) {
+    darkLightModeEl.innerHTML = "01001100"; 
+    document.documentElement.style.setProperty("filter", "none");
+    darkLightModeEl.setAttribute("title", "Set to light mode.");
+}
+else if (parseInt(darkmode) === 0) {
+    darkLightModeEl.innerHTML = "01000100"; 
+    document.documentElement.style.setProperty("filter", "invert()");
+    darkLightModeEl.setAttribute("title", "Set to dark mode.");
+}
+
+// Event Listeners:
+
 document.getElementById("about-link").addEventListener("click", function (e) {
     handleNavClick(e);
 });
+
 document.getElementById("work-link").addEventListener("click", function (e) {
     handleNavClick(e);
 });
+
 document.getElementById("contact-link").addEventListener("click", function (e) {
     handleNavClick(e);
 });
 
-let data = fetch("https://z1m3d49k84.execute-api.us-west-2.amazonaws.com/projects", {
-    method: "GET",
-    mode: "cors",
-})
-.then(response => {
-    return response.json()
-})
-.then(carouselData => {
-    arrayOfProjects = carouselData;
-    let projectsElement = document.getElementById("main-page-projects-wrapper");
-    carouselData.forEach((proj, idx) => {
-        let projectLink = document.createElement("a");
-        projectLink.innerHTML = "Go to project &rarr;";
-        projectLink.setAttribute("href", proj.ProjectURL);
-        projectLink.setAttribute("rel", "noreferrer");
-        projectLink.setAttribute("target", "_blank");
-        
-        let projectLinkDiv = document.createElement("div");
-        projectLinkDiv.appendChild(projectLink);
+darkLightModeEl.addEventListener("click", handleDarkMode);
 
-        let projectDetails = document.createElement("p");
-        projectDetails.innerHTML = proj.projectDetails;
+document.getElementById("main-page-contact-list-emailcopy").addEventListener("click", handleCopy)
 
-        let projectTitle = document.createElement("h4");
-        projectTitle.textContent = proj.projectTitle;
+// Functions To Handle Logic:
 
-        let hoverArea = document.createElement("div");
-        hoverArea.appendChild(projectTitle);
-        hoverArea.appendChild(projectDetails);
-        hoverArea.appendChild(projectLinkDiv);
+function handleDarkMode() {
+    if (parseInt(darkmode) === 1) {
+        darkmode = 0;
+        darkLightModeEl.innerText = "01000100";
+        document.documentElement.style.setProperty("filter", "invert()");
+        darkLightModeEl.setAttribute("title", "Set to dark mode.");
+        localStorage.setItem("darkmode", darkmode);
+    }
+    else if (parseInt(darkmode) === 0) {
+        darkmode = 1;
+        darkLightModeEl.innerText = "01001100";
+        document.documentElement.style.setProperty("filter", "none");
+        darkLightModeEl.setAttribute("title", "Set to light mode.");
+        localStorage.setItem("darkmode", darkmode);
+    }
+}
 
-        let projectImg = document.createElement("img");
-        projectImg.setAttribute("src", proj.projectImg);
-        projectImg.setAttribute("alt", proj.projectImgDesc);
-        
-        let projectItem = document.createElement("div");
-        projectItem.addEventListener("touchstart", function(){
-            let classList = Array.from(projectItem.classList);
-            if (classList.includes("hover_effect")) {
-                projectItem.classList.remove("hover_effect");
-                return;
-            }
-            projectItem.classList.add("hover_effect")
-        });
-        projectItem.setAttribute("class", "projects-item")
-        projectItem.setAttribute("style", `--order: ${idx }`)
-        projectItem.appendChild(projectImg);
-        projectItem.appendChild(hoverArea);
-        projectsElement.appendChild(projectItem);
-    })
-})
-.catch(err => {
-    console.error(err)
-})
+function handleCopy() {
+    navigator.clipboard.writeText("daniel.jakob.jackson@gmail.com");
+
+    let copyEmailPopup = document.getElementById("emailcopy-popup");
+    let copyEmailPopupList = Array.from(copyEmailPopup.classList);
+    if (!copyEmailPopupList.includes("triggered")) {
+        copyEmailPopup.classList.add("triggered");
+
+        setTimeout(() => {
+            copyEmailPopup.classList.remove("triggered");
+        }, 2000);
+    }
+}
 
 function handleNavClick(e) {
     e.preventDefault();
