@@ -36,7 +36,7 @@ let data = fetch("../projs.json", {
         
         let projectItem = document.createElement("div");
         projectItem.addEventListener("touchstart", function(e){
-            e.preventDefault();
+            e.stopPropagation();
             let classList = Array.from(projectItem.classList);
             if (!classList.includes("hover_effect")) {
                 projectItem.classList.add("hover_effect");
