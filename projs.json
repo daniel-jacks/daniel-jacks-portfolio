@@ -1,4 +1,12 @@
 [
+    
+    {
+        "ProjectURL": "https://github.com/daniel-jacks/socki-talki-v2",
+        "projectDetails": "CLI chat app, built with JS, Python, and AWS Serverless Architecture.",
+        "projectImg": "style/imgs/sockiTalkiwText.png",
+        "projectImgDesc": "Chat between friends within command-line interface",
+        "projectTitle": "Socki-Talki-v2"
+    },
     {
         "ProjectURL": "https://github.com/daniel-jacks/vanity-numbers",
         "projectDetails": "Vanity number generator workflow built with JS and AWS Architecture.",
