@@ -3,14 +3,24 @@
 let darkmode = localStorage.getItem("darkmode") ?? 1;
 let darkLightModeEl = document.getElementById("lightmode-darkmode");
 
-if (parseInt(darkmode) === 1) {
+function darkMode() {
     darkLightModeEl.innerHTML = "01001100"; 
     document.documentElement.style.setProperty("filter", "none");
+    document.getElementById("main-page-projects-wrapper").style.setProperty("filter", "none");
+}
+
+function lightMode() {
+    darkLightModeEl.innerHTML = "01000100"; 
+    document.documentElement.style.setProperty("filter", "invert()");
+    document.getElementById("main-page-projects-wrapper").style.setProperty("filter", "invert()");
+}
+
+if (parseInt(darkmode) === 1) {
+    lightMode();
     darkLightModeEl.setAttribute("title", "Set to light mode.");
 }
 else if (parseInt(darkmode) === 0) {
-    darkLightModeEl.innerHTML = "01000100"; 
-    document.documentElement.style.setProperty("filter", "invert()");
+    darkMode();
     darkLightModeEl.setAttribute("title", "Set to dark mode.");
 }
 
@@ -46,16 +56,12 @@ document.getElementById("main-page-contact-list-emailcopy").addEventListener("cl
 function handleDarkMode() {
     if (parseInt(darkmode) === 1) {
         darkmode = 0;
-        darkLightModeEl.innerText = "01000100";
-        document.documentElement.style.setProperty("filter", "invert()");
-        darkLightModeEl.setAttribute("title", "Set to dark mode.");
+        darkMode();
         localStorage.setItem("darkmode", darkmode);
     }
     else if (parseInt(darkmode) === 0) {
         darkmode = 1;
-        darkLightModeEl.innerText = "01001100";
-        document.documentElement.style.setProperty("filter", "none");
-        darkLightModeEl.setAttribute("title", "Set to light mode.");
+        lightMode();
         localStorage.setItem("darkmode", darkmode);
     }
 }

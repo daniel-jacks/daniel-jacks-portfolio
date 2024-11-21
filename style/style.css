@@ -437,9 +437,10 @@ h4 {
     gap: 2rem;
 }
 
-#main-page-projects-widget>#main-page-projects>#main-page-projects-wrapper>h4 {
+#main-page-projects-widget>#main-page-projects>h4 { 
     grid-column: 1/-1;
     color: var(--fc-primary);
+    padding: 0 4% 2rem 4%;
     font-size: 34px;
     animation: fadeIn;
     animation-duration: 1.5s;
@@ -514,26 +515,34 @@ h4 {
 
 @media screen and (max-width: 1017px) {
     #main-page-grid {
-        grid-template-rows: 3rem auto 5rem 3rem auto;
+        grid-template-rows: 3rem 5rem auto 3rem auto;
+    }
+
+    #main-page-links {
+        grid-row: 2;
+        grid-column: 2 / 5;
+        padding: 0 0 0 0;
+        margin-left: 0;
+        margin-right: 1%;
+        border: 8px ridge var(--border-primary);
+        border-bottom: 8px solid var(--bg-primary);
+        border-right: 8px solid var(--bg-primary);
     }
 
     #main-page-content {
         width: auto;
-        grid-row: 2;
-        grid-column: 2 / 5;
-        margin-right: 1%;
-    }
-
-    #main-page-links {
         grid-row: 3;
         grid-column: 2 / 5;
-        padding: 0 0 0 0;
         margin-left: 1%;
+        border: 8px ridge var(--border-primary);
+        border-top: 8px solid var(--bg-primary);
+        border-left: 8px solid var(--bg-primary);
     }
 
     #main-page-links-list {
         display: flex;
         justify-content: space-around;
+        padding-top: 13px;
     }
 
     #main-page-links-list>div {
@@ -544,6 +553,10 @@ h4 {
 
     #main-page-projects-widget {
         grid-row: 5;
+    }
+
+    #main-page-projects-widget>#main-page-projects>h4 {
+        padding: 0 5% 2rem 5%;
     }
 
     #main-page-projects-widget>#main-page-projects>#main-page-projects-wrapper {
@@ -601,9 +614,10 @@ h4 {
 
     #main-page-links-list>div {
         font-size: 19px;
+        min-width: 0px;
     }
 
-    #main-page-projects-widget>#main-page-projects>#main-page-projects-wrapper>h4 {
+    #main-page-projects-widget>#main-page-projects>h4 {
         font-size: 26px;
     }
 }
