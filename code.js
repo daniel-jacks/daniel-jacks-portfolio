@@ -8,6 +8,7 @@ function darkMode() {
   document
     .getElementById("main-page-projects-wrapper")
     .style.setProperty("filter", "none");
+  
   darkLightModeEl.setAttribute("title", "Set to light mode.");
 }
 
@@ -17,6 +18,7 @@ function lightMode() {
   document
     .getElementById("main-page-projects-wrapper")
     .style.setProperty("filter", "invert()");
+  
   darkLightModeEl.setAttribute("title", "Set to dark mode.");
 }
 
