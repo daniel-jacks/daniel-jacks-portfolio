@@ -4,20 +4,24 @@ let darkLightModeEl = document.getElementById("lightmode-darkmode");
 
 function darkMode() {
   darkLightModeEl.innerHTML = "01001100";
-  document.documentElement.style.setProperty("filter", "none");
-  document
-    .getElementById("main-page-projects-wrapper")
-    .style.setProperty("filter", "none");
-  
+  document.documentElement.classList.add("invert-dark");
+  document.documentElement.classList.remove("invert-light");
+  var projectsWrapper = document
+    .getElementById("main-page-projects-wrapper");
+  projectsWrapper.classList.add("invert-dark");
+  projectsWrapper.classList.remove("invert-light");
+
   darkLightModeEl.setAttribute("title", "Set to light mode.");
 }
 
 function lightMode() {
   darkLightModeEl.innerHTML = "01000100";
-  document.documentElement.style.setProperty("filter", "invert()");
-  document
-    .getElementById("main-page-projects-wrapper")
-    .style.setProperty("filter", "invert()");
+  document.documentElement.classList.add("invert-light");
+  document.documentElement.classList.remove("invert-dark");
+  var projectsWrapper = document
+    .getElementById("main-page-projects-wrapper");
+  projectsWrapper.classList.add("invert-light");
+  projectsWrapper.classList.remove("invert-dark");
   
   darkLightModeEl.setAttribute("title", "Set to dark mode.");
 }
