@@ -28,16 +28,16 @@ if (parseInt(darkmode) === 1) {
   lightMode();
 }
 
-// Tickle Flicker handling:
-const symbols = ["λ", "%", "_", "[", "{"];
-const openingBrackets = ["[", "{"];
-const closingBrackets = ["]", "}"];
-const validOpeningBracketIndices = [0, 1, 2, 3, 7, 8, 9];
+// Flicker handling:
+const symbols = ["λ", "%", "_", "<", "[", "{"];
+const openingBrackets = ["<", "[", "{"];
+const closingBrackets = [">", "]", "}"];
 let previousSymbol;
 
-const interval = 13500;
+const interval = 12500;
 
 function flickerEffect() {
+  // Depends on screen size to target correct elements
   const titleElementChildren =
     window.screen.width > 605
       ? document.getElementById("fullscreentitle").children
@@ -45,49 +45,73 @@ function flickerEffect() {
           ...document.getElementById("smallscreentitle1").children,
           ...document.getElementById("smallscreentitle2").children,
         ];
+  
+  if (!flickerBaseCase(titleElementChildren)) {
+    return;
+  }
 
+  // Get random symbol that does not match previous random symbol
   let symbolIndex, randomSymbol;
   do {
     symbolIndex = Math.floor(Math.random() * symbols.length);
-    randomSymbol = randomSymbol = symbols[symbolIndex];
-    console.log(randomSymbol);
+    randomSymbol = symbols[symbolIndex];
   } while (previousSymbol === randomSymbol);
-
   previousSymbol = randomSymbol;
 
-  let letterIndex;
+  let firstLetterIdx;
   do {
-    letterIndex = Math.floor(Math.random() * titleElementChildren.length);
+    firstLetterIdx = Math.floor(Math.random() * titleElementChildren.length);
   } while (
-    titleElementChildren[letterIndex].classList.contains("flicker-disabled") ||
-    (openingBrackets.includes(randomSymbol) &&
-      !validOpeningBracketIndices.includes(letterIndex))
+    titleElementChildren[firstLetterIdx].classList.contains("flicker-disabled") || 
+    openingBrackets.includes(randomSymbol) &&
+    !validOpenBracket(randomSymbol, titleElementChildren, firstLetterIdx)
   );
+  const firstLetter = titleElementChildren[firstLetterIdx];
 
-  const firstLetter = titleElementChildren[letterIndex];
-  if (openingBrackets.includes(randomSymbol)) {
-    const closingSymbol =
-      closingBrackets[openingBrackets.findIndex((v) => v === randomSymbol)];
-    let secondLetterIndex;
+  if (validOpenBracket(randomSymbol, titleElementChildren, firstLetterIdx)) {
+    const closeBracket = closingBrackets[openingBrackets.findIndex(b => b === randomSymbol)];
+
+    let secondLetterIdx;
     do {
-      secondLetterIndex = Math.floor(
-        Math.random() * titleElementChildren.length
-      );
+      secondLetterIdx = Math.floor(Math.random() * titleElementChildren.length);
     } while (
-      titleElementChildren[secondLetterIndex].classList.contains(
-        "flicker-disabled"
-      ) ||
-      secondLetterIndex <= letterIndex ||
-      secondLetterIndex === letterIndex + 1 ||
-      secondLetterIndex > letterIndex + 3
+      titleElementChildren[secondLetterIdx].classList.contains("flicker-disabled") || 
+      !validCloseBracket(closeBracket, titleElementChildren, secondLetterIdx, firstLetterIdx)
     );
-    const secondLetter =
-      titleElementChildren[secondLetterIndex] ??
-      titleElementChildren[titleElementChildren.length - 1];
-    replaceLetter(secondLetter, closingSymbol);
+
+    const secondLetter = titleElementChildren[secondLetterIdx];
+    replaceLetter(secondLetter, closeBracket);
   }
 
   replaceLetter(firstLetter, randomSymbol);
+}
+
+function flickerBaseCase(titleElementChildren) {
+   return Array.from(titleElementChildren).length === 16 &&
+          Array.from(titleElementChildren).filter(el => el.classList.contains("flicker-disabled")).length === 2 &&
+          Array.from(titleElementChildren).filter(el => el.classList.contains("daniel")).length === 6 &&
+          Array.from(titleElementChildren).filter(el => el.classList.contains("jacks")).length === 5 &&
+          Array.from(titleElementChildren).filter(el => el.classList.contains("open-bracket-enabled")).length === 7 &&
+          Array.from(titleElementChildren).filter(el => el.classList.contains("close-bracket-enabled")).length === 7
+}
+
+function validOpenBracket(symbol, titleElementChildren, index) {
+  return openingBrackets.includes(symbol) && 
+         titleElementChildren[index].classList.contains("open-bracket-enabled")
+}
+
+function validCloseBracket(symbol, titleElementChildren, index, openBracketIndex) {
+  return closingBrackets.includes(symbol) && 
+         titleElementChildren[index].classList.contains("close-bracket-enabled") &&
+         titleMatch(titleElementChildren, index, openBracketIndex) &&
+         index > openBracketIndex + 1;
+}
+
+function titleMatch(titleElementChildren, index, openBracketIndex) {
+  return titleElementChildren[openBracketIndex].classList.contains("daniel") &&
+         titleElementChildren[index].classList.contains("daniel") ||
+         titleElementChildren[openBracketIndex].classList.contains("jacks") &&
+         titleElementChildren[index].classList.contains("jacks");
 }
 
 function replaceLetter(letter, symbol) {
@@ -105,7 +129,7 @@ function replaceLetter(letter, symbol) {
     setTimeout(() => {
       letter.classList.remove("flicker");
     }, 200);
-  }, 3000);
+  }, 2000);
 }
 
 setInterval(flickerEffect, interval);
