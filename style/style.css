@@ -325,19 +325,19 @@ h4 {
 #main-page-content-wrapper.about {
     transform: translate(0);
     transition-property: transform;
-    transition-duration: .4s;
+    transition-duration: .68s;
 }
 
 #main-page-content-wrapper.experience {
     transform: translate(-25%);
     transition-property: transform;
-    transition-duration: .4s;
+    transition-duration: .68s;
 }
 
 #main-page-content-wrapper.contact {
     transform: translate(-50%);
     transition-property: transform;
-    transition-duration: .4s;
+    transition-duration: .68s;
 }
 
 #main-page-about-title {
