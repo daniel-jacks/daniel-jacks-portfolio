@@ -32,13 +32,17 @@ if (parseInt(darkmode) === 1) {
   lightMode();
 }
 
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 // Flicker handling:
 const symbols = ["λ", "%", "_", "<", "[", "{"];
 const openingBrackets = ["<", "[", "{"];
 const closingBrackets = [">", "]", "}"];
 let previousSymbol;
 
-const interval = 12500;
+const flickerInterval = 12500;
 
 function flickerEffect() {
   // Depends on screen size to target correct elements
@@ -136,7 +140,31 @@ function replaceLetter(letter, symbol) {
   }, 2000);
 }
 
-setInterval(flickerEffect, interval);
+setInterval(flickerEffect, flickerInterval);
+
+// Preview My Work on mobile devices:
+const previewInterval = 7500;
+let previewIdx = 0;
+
+function previewWork() {
+  if (!isMobile()) return;
+
+  const projectItemsArr = Array.from(document.getElementsByClassName("projects-item"));
+
+  projectItemsArr.forEach(el => {
+    el.classList.remove("preview");
+  });
+
+  if (!projectItemsArr.some(el => el.classList.contains("hover_effect"))) {
+    projectItemsArr[previewIdx].classList.add("preview");
+    previewIdx++;
+    if (previewIdx === projectItemsArr.length) {
+      previewIdx = 0;
+    }
+  }
+}
+
+setInterval(previewWork, previewInterval)
 
 // Event Listeners:
 document.getElementById("about-link").addEventListener("click", function (e) {

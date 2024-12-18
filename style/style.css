@@ -553,12 +553,14 @@ h4 {
 }
 
 .projects-item:hover img,
-.projects-item.hover_effect img {
+.projects-item.hover_effect img,
+.projects-item.preview img {
     transform: scale(1.2);
 }
 
 .projects-item:hover div,
-.projects-item.hover_effect div {
+.projects-item.hover_effect div,
+.projects-item.preview div {
     transform: translateY(0);
     opacity: 1;
 }
