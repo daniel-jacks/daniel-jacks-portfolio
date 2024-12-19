@@ -143,7 +143,7 @@ function replaceLetter(letter, symbol) {
 setInterval(flickerEffect, flickerInterval);
 
 // Preview My Work on mobile devices:
-const previewInterval = 7500;
+const previewInterval = 3500;
 let previewIdx = 0;
 
 function previewWork() {
