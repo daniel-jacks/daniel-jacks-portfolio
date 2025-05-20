@@ -190,6 +190,56 @@ h1 {
     letter-spacing: .15em;
 }
 
+#lightmode-darkmode {
+    display: flex;
+    align-items: center;
+    font-family: sourcecodepro;
+    line-height: .8;
+}
+
+
+#lightmode-darkmode-check {
+    border: 1px solid var(--fc-primary);
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+}
+
+.square-outline.showing {
+    border: 1px solid var(--fc-primary);
+    width: 28px;
+    height: 18px;
+    margin-right: 3px;
+    font-size: 19px;
+}
+
+.square-outline.notshowing {
+    border: 1px solid transparent;
+    width: 28px;
+    height: 18px;
+    margin-right: 3px;
+    font-size: 19px;
+}
+
+.square-content {
+    letter-spacing: .32em;
+}
+
+.square-content.notshowing {
+    display: none;
+}
+
+.square-content.showing {
+    display: block;
+}
+
+#darkmode-enabled.enabled {
+    background-color: var(--fc-primary);
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+}
+
 #fullscreentitle {
     visibility: hidden;
     overflow: hidden;
@@ -237,8 +287,8 @@ h1 {
     animation-fill-mode: forwards;
 }
 
-h2 {
-    font-size: 28px;
+label#lightmode-darkmode {
+    font-size: 20px;
     padding-top: 1rem;
     cursor: pointer;
     width: fit-content;

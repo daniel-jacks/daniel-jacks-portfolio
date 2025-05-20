@@ -1,9 +1,12 @@
 // Dark Mode handling:
 let darkmode = localStorage.getItem("darkmode") ?? 0; // Default to light mode
 let darkLightModeEl = document.getElementById("lightmode-darkmode");
+const darkmodeSquareEls = document.querySelectorAll(
+  ".square-outline.showing"
+);
+let showingDarkmodeSquares = true;
 
 function darkMode() {
-  darkLightModeEl.innerHTML = "01001100";
   document.documentElement.classList.add("invert-dark");
   document.documentElement.classList.remove("invert-light");
   var projectsWrapper = document
@@ -11,11 +14,13 @@ function darkMode() {
   projectsWrapper.classList.add("invert-dark");
   projectsWrapper.classList.remove("invert-light");
 
+  var checkboxEl = document.getElementById("darkmode-enabled");
+  checkboxEl.classList.add("enabled");
+
   darkLightModeEl.setAttribute("title", "Set to light mode.");
 }
 
 function lightMode() {
-  darkLightModeEl.innerHTML = "01000100";
   document.documentElement.classList.add("invert-light");
   document.documentElement.classList.remove("invert-dark");
   var projectsWrapper = document
@@ -23,6 +28,9 @@ function lightMode() {
   projectsWrapper.classList.add("invert-light");
   projectsWrapper.classList.remove("invert-dark");
   
+  var checkboxEl = document.getElementById("darkmode-enabled");
+  checkboxEl.classList.remove("enabled");
+
   darkLightModeEl.setAttribute("title", "Set to dark mode.");
 }
 
@@ -140,7 +148,61 @@ function replaceLetter(letter, symbol) {
   }, 2000);
 }
 
+function getRandomIndex(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr.splice(randomIndex, 1)[0];
+}
+
+function showAndHideDarkmodeLetters() {
+  const remaining = [...darkmodeSquareEls];
+
+  const interval = setInterval(() => {
+    if (remaining.length === 0) {
+      clearInterval(interval);
+      showingDarkmodeSquares = !showingDarkmodeSquares;
+      setTimeout(() => {
+        showAndHideDarkmodeLetters();
+      }, 1000);
+      return;
+    }
+
+    const el = getRandomIndex(remaining);
+    if (showingDarkmodeSquares) {
+      showLetter(el);
+    } else if (!showingDarkmodeSquares) {
+      hideLetter(el);
+    }
+  }, 3000);
+}
+
+function hideLetter(el) {
+  el.classList.add("flicker");
+
+  setTimeout(() => {
+    el.classList.remove("flicker");
+  }, 200);
+
+  el.classList.add("showing");
+  el.classList.remove("notshowing");
+  el.children[0].classList.add("notshowing");
+  el.children[0].classList.remove("showing");
+}
+
+function showLetter(el) {
+  el.classList.add("flicker");
+
+  setTimeout(() => {
+    el.classList.remove("flicker");
+  }, 200);
+
+  el.classList.add("notshowing");
+  el.classList.remove("showing");
+  el.children[0].classList.add("showing");
+  el.children[0].classList.remove("notshowing");
+}
+
 setInterval(flickerEffect, flickerInterval);
+showAndHideDarkmodeLetters();
 
 // Preview My Work on mobile devices:
 const previewInterval = 3500;
