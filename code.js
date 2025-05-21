@@ -50,7 +50,8 @@ const openingBrackets = ["<", "[", "{"];
 const closingBrackets = [">", "]", "}"];
 let previousSymbol;
 
-const flickerInterval = 12500;
+const flickerInterval = 10000;
+const darkmodeChangeInterval = 2000;
 
 function flickerEffect() {
   // Depends on screen size to target correct elements
@@ -162,7 +163,7 @@ function showAndHideDarkmodeLetters() {
       showingDarkmodeSquares = !showingDarkmodeSquares;
       setTimeout(() => {
         showAndHideDarkmodeLetters();
-      }, 1000);
+      }, darkmodeChangeInterval);
       return;
     }
 
@@ -172,7 +173,7 @@ function showAndHideDarkmodeLetters() {
     } else if (!showingDarkmodeSquares) {
       hideLetter(el);
     }
-  }, 3000);
+  }, darkmodeChangeInterval);
 }
 
 function hideLetter(el) {
