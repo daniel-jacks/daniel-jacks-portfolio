@@ -194,7 +194,9 @@ h1 {
     display: flex;
     align-items: center;
     font-family: sourcecodepro;
-    line-height: .85;
+    height: 21px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -210,7 +212,7 @@ h1 {
     width: 28px;
     height: 18px;
     margin-right: 3px;
-    font-size: 19px;
+    font-size: 18px;
 }
 
 .square-outline.notshowing {
@@ -218,7 +220,7 @@ h1 {
     width: 28px;
     height: 18px;
     margin-right: 3px;
-    font-size: 19px;
+    font-size: 18px;
 }
 
 .square-content {
