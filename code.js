@@ -163,7 +163,7 @@ function showAndHideDarkmodeLetters() {
       showingDarkmodeSquares = !showingDarkmodeSquares;
       setTimeout(() => {
         showAndHideDarkmodeLetters();
-      }, darkmodeChangeInterval);
+      }, darkmodeChangeInterval * 4);
       return;
     }
 
