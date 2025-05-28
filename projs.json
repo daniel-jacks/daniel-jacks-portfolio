@@ -2,7 +2,7 @@
     
     {
         "ProjectURL": "https://github.com/daniel-jacks/socki-talki-v2",
-        "projectDetails": "Command line interface chat app; built with JS, Python, and AWS Serverless Architecture.",
+        "projectDetails": "Real-time CLI chat application; built with JS, Python, AWS Lambda, DynamoDB, API Gateway, and WebSockets.",
         "projectImg": "style/imgs/sockiTalkiwText.png",
         "projectImgDesc": "Chat between friends within command-line interface",
         "projectTitle": "Socki-Talki-v2",
@@ -10,15 +10,15 @@
     },
     {
         "ProjectURL": "https://github.com/daniel-jacks/vanity-numbers",
-        "projectDetails": "Vanity number generation workflow; built with JS and AWS Architecture.",
+        "projectDetails": "Vanity phone number generator (converts digits to memorable words) with call-in functionality; built with Node.js, AWS Lambda, DynamoDB, and Amazon Connect.",
         "projectImg": "style/imgs/vanityGenerator.png",
         "projectImgDesc": "Amazon Connect flow",
-        "projectTitle": "Amazon Connect Vanity Number Generator",
+        "projectTitle": "AWS Vanity Number Generator",
         "isProject": true
     },
     {
         "ProjectURL": "https://applianceauthoritydfw.com",
-        "projectDetails": "Custom mobile-first website designed for a small business.",
+        "projectDetails": "Responsive small-business website; built with React with TypeScript and Material-UI.",
         "projectImg": "style/imgs/AAPhoneImages.png",
         "projectImgDesc": "Images of Appliance Authority website on mobile phone",
         "projectTitle": "Appliance Authority Website",

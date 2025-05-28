@@ -180,30 +180,22 @@ function replaceLetter(letter, symbol) {
 setInterval(flickerEffect, flickerInterval);
 
 // Preview My Work on mobile devices:
-const previewInterval = 3500;
-let previewIdx = 0;
 
 function previewWork() {
   if (!isMobile()) return;
 
-  const projectItemsArr = Array.from(
-    document.getElementsByClassName("projects-item")
-  );
-
-  projectItemsArr.forEach((el) => {
-    el.classList.remove("preview");
-  });
-
-  if (!projectItemsArr.some((el) => el.classList.contains("hover_effect"))) {
-    projectItemsArr[previewIdx].classList.add("preview");
-    previewIdx++;
-    if (previewIdx === projectItemsArr.length) {
-      previewIdx = 0;
-    }
-  }
+  setTimeout(() => {
+    const projectItemsArr = Array.from(
+      document.getElementsByClassName("projects-item")
+    );
+  
+    projectItemsArr.forEach((el) => {
+      el.classList.add("preview");
+    });
+  }, 2000);
 }
 
-setInterval(previewWork, previewInterval);
+previewWork();
 
 // Event Listeners:
 document.getElementById("about-link").addEventListener("click", function (e) {

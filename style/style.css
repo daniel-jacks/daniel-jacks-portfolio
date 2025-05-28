@@ -214,7 +214,7 @@ h1 {
 
 #lightmode-darkmode-word {
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 375;
 }
 
 #darkmode-enabled.enabled {
@@ -711,6 +711,18 @@ h4 {
 @media screen and (max-width: 420px) {
     #main-page-contact-list {
         font-size: 14px;
+    }
+
+    .projects-item>div {
+        padding: 7px;
+    }
+
+    .projects-item>div>h4 {
+        font-size: 1.88vh;
+    }
+
+    .projects-item>div>p {
+        font-size: 1.7vh;
     }
 }
 
