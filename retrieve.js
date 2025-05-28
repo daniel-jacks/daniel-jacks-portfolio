@@ -6,7 +6,6 @@ fetch("../projs.json", {
     return response.json();
   })
   .then((projectData) => {
-    arrayOfProjects = projectData;
     let projectsElement = document.getElementById("main-page-projects-wrapper");
     projectData.forEach((proj, idx) => {
       projectsElement.appendChild(createTile(proj, idx, proj.isProject));
