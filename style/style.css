@@ -593,7 +593,7 @@ h4 {
 .projects-item.hover_effect div,
 .projects-item.preview div {
     transform: translateY(0);
-    opacity: 1;
+    opacity: .9;
 }
 
 @media screen and (max-width: 1017px) {
@@ -718,11 +718,11 @@ h4 {
     }
 
     .projects-item>div>h4 {
-        font-size: 1.88vh;
+        font-size: 6vw;
     }
 
     .projects-item>div>p {
-        font-size: 1.7vh;
+        font-size: 4.2vw;
     }
 }
 

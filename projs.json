@@ -3,10 +3,18 @@
     {
         "ProjectURL": "https://github.com/daniel-jacks/socki-talki-v2",
         "projectDetails": "Real-time CLI chat application; built with JS, Python, AWS Lambda, DynamoDB, API Gateway, and WebSockets.",
-        "projectImg": "style/imgs/sockiTalkiwText.png",
+        "projectImg": "style/imgs/SockiTalkiDemo.png",
         "projectImgDesc": "Chat between friends within command-line interface",
         "projectTitle": "Socki-Talki-v2",
         "isProject": true
+    },
+    {
+        "ProjectURL": "https://awakened.fit",
+        "projectDetails": "Individually designed and developed fitness coaching site. Showcases frontend expertise with creative design skills. Built with React with TypeScript, Vite, and Material UI.",
+        "projectImg": "style/imgs/FitAppPhoneImages.png",
+        "projectImgDesc": "Images of Awakened Physiques website on mobile phone",
+        "projectTitle": "Awakened Physiques Website",
+        "isProject": false
     },
     {
         "ProjectURL": "https://github.com/daniel-jacks/vanity-numbers",
@@ -18,7 +26,7 @@
     },
     {
         "ProjectURL": "https://applianceauthoritydfw.com",
-        "projectDetails": "Responsive small-business website; built with React with TypeScript and Material-UI.",
+        "projectDetails": "Responsive small-business website; built with React with TypeScript and Material UI.",
         "projectImg": "style/imgs/AAPhoneImages.png",
         "projectImgDesc": "Images of Appliance Authority website on mobile phone",
         "projectTitle": "Appliance Authority Website",
