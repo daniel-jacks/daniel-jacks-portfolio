@@ -9,14 +9,6 @@
         "isProject": true
     },
     {
-        "ProjectURL": "https://awakened.fit",
-        "projectDetails": "Individually designed and developed fitness coaching site. Showcases frontend expertise with creative design skills. Built with React with TypeScript, Vite, and Material UI.",
-        "projectImg": "style/imgs/FitAppPhoneImages.png",
-        "projectImgDesc": "Images of Awakened Physiques website on mobile phone",
-        "projectTitle": "Awakened Physiques Website",
-        "isProject": false
-    },
-    {
         "ProjectURL": "https://github.com/daniel-jacks/vanity-numbers",
         "projectDetails": "Vanity phone number generator (converts digits to memorable words) with call-in functionality; built with Node.js, AWS Lambda, DynamoDB, and Amazon Connect.",
         "projectImg": "style/imgs/vanityGenerator.png",
